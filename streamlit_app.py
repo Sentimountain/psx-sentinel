@@ -4,8 +4,8 @@ import pandas as pd, feedparser, time
 from datetime import datetime
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-st.set_page_config(page_title="PSX Sentinel - Not Financial Advice", layout="wide")
-st.title("PSX Sentinel — Real-Time Pakistan Stock Sentiment")
+st.set_page_config(page_title="PSX Sentinel", layout="wide")
+st.title("PSX Sentinel  - Not Financial Advice — Real-Time Sentiment")
 st.markdown("**460+ symbols · Full company names · Zero 0.00 scores**")
 
 # Load mapping
