@@ -18,9 +18,9 @@ COMPANY_NAMES = load_mapping()
 
 analyzer = SentimentIntensityAnalyzer()
 boost = {
-    'dividend':3.4, 'bonus':3.7, 'rights':2.6, 'result':3.0, 'profit':2.4,
-    'earnings':2.6, 'eps':2.5, 'rollover':2.5, 'expiry':2.1, 'expansion':2.0,
-    'loss':-2.5, 'default':-3.5, 'probe':-3.0, 'penalty':-2.8, 'shutdown':-2.6,
+    'dividend':3.5, 'bonus':3, 'rights':2.6, 'result':3.0, 'profit':3,
+    'earnings':2.6, 'eps':2.5, 'rollover':2.5, 'expiry':1.5, 'expansion':2.0,
+    'loss':-2.5, 'default':-3.5, 'probe':-3.0, 'penalty':-3, 'shutdown':-2.6,
     'closure':-2.4, 'fire':-2.2, 'fraud':-3.2, 'scam':-3.0
 }
 for w,s in boost.items(): analyzer.lexicon[w] = s
@@ -85,7 +85,7 @@ if st.button("RUN SENTIMENT ANALYSIS", type="primary"):
 
         score = round(sum(analyzer.polarity_scores(t)['compound'] for t in texts)/len(texts), 3) if texts else 0.0
         signal = ("STRONG BUY" if score >= 0.40 else "BUY" if score >= 0.15 else
-                  "STRONG SELL" if score <= -0.40 else "SELL" if score <= -0.15 else "HOLD")
+                  "STRONG SELL" if score <= -0.40 else "SELL" if score <= -0.10 else "HOLD")
 
         results.append({"Symbol":sym, "Score":score, "Signal":signal, "Articles":len(texts)})
         progress.progress((i+1)/len(symbols))
